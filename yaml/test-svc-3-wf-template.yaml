@@ -50,6 +50,8 @@ spec:
             echo -n $LATEST_COMMIT > /workdir/tag.txt
             cat /workdir/tag.txt
             chmod -R ugo+rw /workdir
+            ls -lh /workdir
+            ls -lh /workdir/test-svc-3-app
         volumeMounts:
         - name: workdir
           mountPath: /workdir
@@ -64,6 +66,8 @@ spec:
         - |
             mkdir -p /kaniko/.docker
             cp /mnt/harbor/.dockerconfigjson /kaniko/.docker/config.json
+            ls -lh /workdir
+            ls -lh /workdir/test-svc-3-app
             cd /workdir/test-svc-3-app
             /kaniko/executor \
               --dockerfile source/Dockerfile \
